@@ -502,7 +502,7 @@ class CookiesTest < ActionController::TestCase
   def test_set_permanent_cookie
     get :set_permanent_cookie
     assert_match(/Jamie/, @response.headers["Set-Cookie"])
-    assert_match(%r(#{20.years.from_now.utc.year}), @response.headers["Set-Cookie"])
+    assert_match(%r(#{1.year.from_now.utc.year}), @response.headers["Set-Cookie"])
   end
 
   def test_read_permanent_cookie
@@ -742,7 +742,7 @@ class CookiesTest < ActionController::TestCase
 
   def test_permanent_signed_cookie
     get :set_permanent_signed_cookie
-    assert_match(%r(#{20.years.from_now.utc.year}), @response.headers["Set-Cookie"])
+    assert_match(%r(#{1.year.from_now.utc.year}), @response.headers["Set-Cookie"])
     assert_equal 100, @controller.send(:cookies).signed[:remember_me]
   end
 
