@@ -505,7 +505,7 @@ module ActionDispatch
     class PermanentCookieJar < AbstractCookieJar # :nodoc:
       private
         def commit(name, options)
-          options[:expires] = 20.years.from_now
+          options[:expires] = 1.year.from_now
         end
     end
 
